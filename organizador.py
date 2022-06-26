@@ -5,9 +5,16 @@ from prettytable import from_csv
 
 
 def sig_handler(sig, frame):
-	print(f"\n\n[*] {bcolors.OKGREEN}Saliendo...{bcolors.ENDC} [*]\n")
-	sys.exit(0)
+    print(f"\n\n[*] {bcolors.OKGREEN}Saliendo...{bcolors.ENDC} [*]\n")
+    time.sleep(2)
+    os.system('cls')
+    sys.exit(0)
 
+def salir():
+    print(f"\n\n[*] {bcolors.OKGREEN}Saliendo...{bcolors.ENDC} [*]\n")
+    time.sleep(2)
+    os.system('cls')
+    sys.exit(0)
 
 class bcolors:
     HEADER = '\033[95m'
@@ -20,12 +27,12 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-class horario:
-
+def generarHorario():
+    os.system('cls')
     with open("archivos/horario.csv", "r") as fp: 
         x = from_csv(fp)
 
-    horarioTitulo2 = """
+    horarioTitulo = """
     
                                                  _    _                      _       
                                                 | |  | |                    (_)      
@@ -35,7 +42,7 @@ class horario:
                                                 |_|  |_|\___/|_|  \__,_|_|  |_|\___/ 
                                                 \n\n
     """
-
+    print(horarioTitulo, '\n\r', x)
 
 def temporizadorNormal():
     os.system('cls')
@@ -68,11 +75,10 @@ print("------<<<<-------->>>>------\n")
 opcionMenuGeneral = input("Selecciona la opción: ")
 
 if opcionMenuGeneral == "1":
-    print(horario.horarioTitulo2, horario.x)
+    generarHorario()
 elif opcionMenuGeneral == "2":
     temporizadorNormal()
 elif opcionMenuGeneral == "0":
-    print(f"\n\n[*] {bcolors.OKGREEN}Saliendo...{bcolors.ENDC} [*]\n")
-    sys.exit(0)
+    salir()
 else:
     print("\nOpción invalida\n")
