@@ -1,4 +1,5 @@
 import datetime, sys, signal, time, os
+from pip import main
 from playsound import playsound
 from prettytable import from_csv
 
@@ -62,23 +63,28 @@ def temporizadorNormal():
     print(f"[+] {bcolors.CYAN}Temporizador finalizado{bcolors.ENDC} [+]")
     time.sleep(1)
 
+def main():
+    signal.signal(signal.SIGINT, sig_handler)
 
-signal.signal(signal.SIGINT, sig_handler)
+    print("\n           " + bcolors.WARNING + "[" + bcolors.ENDC + bcolors.OKBLUE + "MENU" + bcolors.ENDC + bcolors.WARNING + "]" + bcolors.ENDC)
+    print("------<<<<-------->>>>------")
+    print("        1. Horario")
+    print("        2. Temporizador Normal")
+    print("        0. Salir")
+    print("------<<<<-------->>>>------\n")
 
-print("\n           " + bcolors.WARNING + "[" + bcolors.ENDC + bcolors.OKBLUE + "MENU" + bcolors.ENDC + bcolors.WARNING + "]" + bcolors.ENDC)
-print("------<<<<-------->>>>------")
-print("        1. Horario")
-print("        2. Temporizador Normal")
-print("        0. Salir")
-print("------<<<<-------->>>>------\n")
+    opcionMenuGeneral = input("Selecciona la opción: ")
 
-opcionMenuGeneral = input("Selecciona la opción: ")
+    if opcionMenuGeneral == "1":
+        generarHorario()
+    elif opcionMenuGeneral == "2":
+        temporizadorNormal()
+    elif opcionMenuGeneral == "0":
+        salir()
+    else:
+        print("\nOpción invalida\n")
 
-if opcionMenuGeneral == "1":
-    generarHorario()
-elif opcionMenuGeneral == "2":
-    temporizadorNormal()
-elif opcionMenuGeneral == "0":
-    salir()
-else:
-    print("\nOpción invalida\n")
+
+
+if __name__ == "__main__":
+    main()
