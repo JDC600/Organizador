@@ -157,7 +157,7 @@ def temporizadorPersonalizado():
             minutos = tiempo.minute
             segundos = tiempo.second
             contador = datetime.timedelta(seconds=tiempoTotal)
-            print(f"{bcolors.FAIL}Hora:{bcolors.ENDC} {hora}h {minutos}m {segundos}s {bcolors.OKGREEN}Descanso:{bcolors.ENDC} {contador}s", end='\r')
+            print(f"{bcolors.FAIL}Hora:{bcolors.ENDC} {hora}h {minutos}m {segundos}s {bcolors.CYAN}Contador:{bcolors.ENDC} {contador}s", end='\r')
             time.sleep(1)
             tiempoTotal -= 1
         playsound('audios/alarma.wav')
