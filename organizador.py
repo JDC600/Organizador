@@ -1,6 +1,4 @@
-from cgitb import reset
 import datetime, sys, signal, time, os
-from threading import local
 from pip import main
 from playsound import playsound
 from prettytable import from_csv
